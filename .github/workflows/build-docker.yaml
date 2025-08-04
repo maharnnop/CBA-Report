@@ -4,7 +4,7 @@ on:
 
 jobs:
   publish_images:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps :
       - name: checkout
         uses: actions/checkout@v4
@@ -12,5 +12,6 @@ jobs:
         run: docker build . -t maharnnops360/amity-cba-report:latest 
       - name: push image to docker hub
         run: |
+          docker login -u maharnnops360 -p ${{ secrets.DOCKER_HUB_TOKEN }}
           docker push maharnnops360/amity-cba-report:latest
 
