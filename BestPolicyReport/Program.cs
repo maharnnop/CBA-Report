@@ -92,11 +92,11 @@ try
              }
 
              // Additional custom validation logic for the claims
-             if (roleClaim != "admin" && roleClaim != "account")
-             {
-                 context.Fail("Invalid role");
-                 return Task.CompletedTask;
-             }
+             //if (roleClaim != "admin" && roleClaim != "account")
+             //{
+             //    context.Fail("Invalid role");
+             //    return Task.CompletedTask;
+             //}
 
              return Task.CompletedTask;
          }
