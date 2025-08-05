@@ -19,6 +19,7 @@
     <PackageReference Include="FastReport.OpenSource.Data.Json" Version="2021.4.0" />
     <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2025.2.0" />
     <PackageReference Include="FastReport.OpenSource.Web" Version="2025.2.0" />
+    <PackageReference Include="Libgdiplus.rntime.osx_arm64" Version="6.1.2" />
     <PackageReference Include="Microsoft.AspNet.Cors" Version="5.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
