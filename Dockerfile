@@ -19,19 +19,25 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 
 # Install libgdiplus and a comprehensive set of its common runtime dependencies.
-# These packages cover font rendering, image formats (JPEG, PNG, GIF, TIFF),
-# and other graphical necessities that System.Drawing and FastReport might use.
+# This now includes more common fonts and the command to refresh the font cache.
 RUN apt-get update && apt-get install -y \
     libgdiplus \
     fontconfig \
     fonts-dejavu-core \
+    ttf-mscorefonts-installer \
+    fonts-liberation \
     libicu-dev \
     libcairo2-dev \
     libjpeg-dev \
     libpng-dev \
     libtiff-dev \
     libgif-dev \
-    libxrender1
+    libxrender1 \
+    # Clean up apt cache to keep image size down
+    && rm -rf /var/lib/apt/lists/*
+
+# Update the font cache after installing new fonts
+RUN fc-cache -f -v
 
 WORKDIR /app
 COPY --from=build /app/publish .
