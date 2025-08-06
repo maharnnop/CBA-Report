@@ -403,7 +403,7 @@ namespace BestPolicyReport.Controllers
 
             var result = await _billService.GetInvoicerpt(invoiceNo, usernameClaim);
             WebReport web = new WebReport();
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\invoiceReport.frx";
+            var path = $"{this._webHostEnvironment.WebRootPath}/Reports/InvoiceReport.frx";
             web.Report.Load(path);
             web.Report.SetParameterValue("invoiceNo", result.invoiceNo);
             web.Report.SetParameterValue("dueDate", result.dueDate.ToString("dd/MM/yyyy"));
