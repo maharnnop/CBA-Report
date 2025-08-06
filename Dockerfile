@@ -1,24 +1,38 @@
-﻿
+﻿# Use the official .NET SDK image as a base image for building
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
-# Use the official .NET SDK image as a base image
-FROM mcr.microsoft.com/dotnet/sdk:6.0  AS base
-# Install libgdiplus in the runtime image
-# This is crucial because your application will run in this stage
-RUN apt-get update && apt-get install -y libgdiplus
+# Update apt and install build-time dependencies (if any)
+# build-essential is added here as it provides common build tools that might be needed
+# for native dependencies, though the primary issue is runtime.
+RUN apt-get update && apt-get install -y apt-utils libc6-dev build-essential
+
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0  AS build
 # Copy the project files to the container
 COPY . .
 
 # Build the application
 RUN dotnet restore
-RUN dotnet publish -c Release -o /app/publish 
-
-
+RUN dotnet publish -c Release -o /app/publish
 
 # Create the final runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
+
+# Install libgdiplus and a comprehensive set of its common runtime dependencies.
+# These packages cover font rendering, image formats (JPEG, PNG, GIF, TIFF),
+# and other graphical necessities that System.Drawing and FastReport might use.
+RUN apt-get update && apt-get install -y \
+    libgdiplus \
+    fontconfig \
+    fonts-dejavu-core \
+    libicu-dev \
+    libcairo2-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    libgif-dev \
+    libxrender1
+
 WORKDIR /app
 COPY --from=build /app/publish .
 
@@ -27,4 +41,3 @@ ENTRYPOINT ["dotnet", "BestPolicyReport.dll"]
 
 # Create the Logs folder
 RUN mkdir Logs
-
