@@ -38,7 +38,7 @@ COPY --from=build /app/publish .
 
 # Copy the wwwroot directory to the final runtime image
 # This ensures static files like your FastReport templates are available
-COPY wwwroot ./BestPolicyReport/wwwroot
+COPY BestPolicyReport/wwwroot ./wwwroot
 
 # Set the entry point for the application
 ENTRYPOINT ["dotnet", "BestPolicyReport.dll"]
