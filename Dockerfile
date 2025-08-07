@@ -1,5 +1,5 @@
-﻿# Use the official .NET SDK image as a base image for building
-F﻿ROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+﻿﻿# Use the official .NET SDK image as a base image for building
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
 # Update apt and install build-time dependencies (if any)
 # build-essential is added here as it provides common build tools that might be needed
@@ -25,21 +25,17 @@ RUN apt-get update && apt-get install -y \
     libgdiplus \
     fontconfig \
     fonts-dejavu-core \
-    libicu-dev \
-    libcairo2-dev \
     ttf-mscorefonts-installer \
     fonts-liberation \
+    libicu-dev \
+    libcairo2-dev \
     libjpeg-dev \
     libpng-dev \
     libtiff-dev \
     libgif-dev \
-    libxrender1 \ 
-    && rm -rf /var/lib/apt/lists/*
+    libxrender1
 
-
-
-# Update the font cache after installing new fonts
-
+RUN rm -rf /var/lib/apt/lists/*
 RUN fc-cache -f -v
 
 WORKDIR /app
