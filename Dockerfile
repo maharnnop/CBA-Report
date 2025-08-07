@@ -25,7 +25,6 @@ RUN apt-get update && apt-get install -y \
     libgdiplus \
     fontconfig \
     fonts-dejavu-core \
-    ttf-mscorefonts-installer \
     libicu-dev \
     libcairo2-dev \
     libjpeg-dev \
