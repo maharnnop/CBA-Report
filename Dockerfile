@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libtiff-dev \
     libgif-dev \
-    libxrender1 \
+    libxrender1 
     
 RUN rm -rf /var/lib/apt/lists/*
 
