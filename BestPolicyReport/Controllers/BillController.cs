@@ -411,12 +411,7 @@ namespace BestPolicyReport.Controllers
 
             var result = await _billService.GetInvoicerpt(invoiceNo, usernameClaim);
             WebReport web = new WebReport();
-            var fonts = Directory.GetFiles($"{this._webHostEnvironment.WebRootPath}/Reports/Fonts");
-            //Each font is added to the report generator configuration
-            foreach (var font in fonts)
-            {
-                Config.PrivateFontCollection.AddFontFile(font);
-            }
+            
 
             var path = $"{this._webHostEnvironment.WebRootPath}/Reports/InvoiceReport.frx";
             web.Report.Load(path);
