@@ -24,8 +24,9 @@ RUN echo "debconf ttf-mscorefonts-installer/accepted-mscorefonts-eula select tru
 
 # Install libgdiplus and a comprehensive set of its common runtime dependencies.
 # This now includes more common fonts and the command to refresh the font cache.
-RUN apt-get update && apt-get install -y \
-    libgdiplus \
+# Setting DEBIAN_FRONTEND to noninteractive ensures no prompts during installation.
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+     libgdiplus \
     fontconfig \
     fonts-dejavu-core \
     ttf-mscorefonts-installer \
@@ -36,7 +37,9 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libtiff-dev \
     libgif-dev \
-    libxrender1 
+    libxrender1 \
+    wget \
+    ca-certificates
     
 RUN rm -rf /var/lib/apt/lists/*
 
