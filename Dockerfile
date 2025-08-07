@@ -1,4 +1,4 @@
-﻿﻿# Use the official .NET SDK image as a base image for building
+﻿# Use the official .NET SDK image as a base image for building
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
 # Update apt and install build-time dependencies (if any)
