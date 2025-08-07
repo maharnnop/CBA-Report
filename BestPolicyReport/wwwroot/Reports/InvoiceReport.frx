@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="07/08/2025 14:35:24" ReportInfo.Modified="07/08/2025 16:58:47" ReportInfo.CreatorVersion="2025.2.0.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/08/2025 14:35:24" ReportInfo.Modified="08/07/2025 10:32:04" ReportInfo.CreatorVersion="2025.2.0.0">
   <ScriptText>using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -54,26 +54,26 @@ namespace FastReport
       <TextObject Name="Text6" Left="415.8" Top="37.8" Width="226.8" Height="18.9" Text="(เป็นการกระทำแทนบริษัทประกันภัย)" Padding="2, 0, 0, 0" HorzAlign="Center" Font="Angsana New, 10pt"/>
       <TextObject Name="Text7" Left="453.6" Top="75.6" Width="151.2" Height="18.9" Text="เลขที่ / NO. 	[invoiceNo]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text8" Top="94.5" Width="189" Height="18.9" Text="เลขประจำตัวผู้เสีภาษีอากร 0135555018419" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
-      <TextObject Name="Text9" Top="113.4" Width="189" Height="18.9" Text="ชื่อผู้เอาประกัน	[insureeName]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
-      <TextObject Name="Text10" Top="132.3" Width="189" Height="18.9" Text="INSURED NAME	[insureeCode]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
+      <TextObject Name="Text9" Top="113.4" Width="264.6" Height="18.9" Text="ชื่อผู้เอาประกัน	[insureeName]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
+      <TextObject Name="Text10" Top="132.3" Width="264.6" Height="18.9" Text="INSURED NAME	[insureeCode]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text11" Top="151.2" Width="75.6" Height="18.9" Text="ที่อยู่	" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text12" Top="170.1" Width="75.6" Height="18.9" Text="ADDRESS" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text13" Left="302.4" Top="113.4" Width="75.6" Height="18.9" Text="วันที่" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text14" Left="302.4" Top="132.3" Width="75.6" Height="18.9" Text="DATE" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
-      <TextObject Name="Text15" Left="302.4" Top="151.2" Width="226.8" Height="18.9" Text="บริษัทประกันภัย	[insurerName]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
+      <TextObject Name="Text15" Left="302.4" Top="151.2" Width="283.5" Height="18.9" Text="บริษัทประกันภัย	[insurerName]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text16" Left="302.4" Top="170.1" Width="75.6" Height="18.9" Text="INSURER" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text17" Left="302.4" Top="189" Width="75.6" Height="18.9" Text="ประเภท	" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text18" Left="302.4" Top="207.9" Width="75.6" Height="18.9" Text="CLASS" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text19" Left="453.6" Top="113.4" Width="132.3" Height="18.9" Text="กำหนดชำระ	[dueDate]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text20" Left="453.6" Top="132.3" Width="75.6" Height="18.9" Text="DATE" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
-      <TextObject Name="Text21" Left="75.6" Top="151.2" Width="151.2" Height="37.8" Text="[insureeLocation]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
+      <TextObject Name="Text21" Left="75.6" Top="151.2" Width="189" Height="37.8" Text="[insureeLocation]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text22" Left="378" Top="189" Width="113.4" Height="37.8" Text="[insureName]" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text23" Left="491.4" Top="189" Width="75.6" Height="18.9" Text="ตัวแทนขาย" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
       <TextObject Name="Text24" Left="491.4" Top="207.9" Width="75.6" Height="18.9" Text="AGENT" Padding="2, 0, 0, 0" Font="Angsana New, 10pt"/>
-      <TableObject Name="Table1" Top="236.25" Width="642.6" Height="173.88">
-        <TableColumn Name="Column1" Width="346.5"/>
-        <TableColumn Name="Column2" Width="148.05"/>
-        <TableColumn Name="Column3" Width="148.05"/>
+      <TableObject Name="Table1" Top="236.25" Width="623.7" Height="173.88">
+        <TableColumn Name="Column1" Width="318.15"/>
+        <TableColumn Name="Column2" Width="166.95"/>
+        <TableColumn Name="Column3" Width="138.6"/>
         <TableRow Name="Row1" Height="41.58">
           <TableCell Name="Cell1" Border.Lines="All" Text="กรมธรรม์เลขที่	[policyNo]" Font="Angsana New, 10pt"/>
           <TableCell Name="Cell2" Border.Lines="All" Text="เริ่มวันที่    [actDate]&#13;&#10;FROM" Font="Angsana New, 10pt"/>

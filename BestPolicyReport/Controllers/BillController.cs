@@ -37,7 +37,13 @@ namespace BestPolicyReport.Controllers
             _billService = billService;
             this._webHostEnvironment = webHostEnvironment;
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-    
+            // Register fonts only once when the application starts or first controller instance is created
+            if (!_fontsRegistered)
+            {
+                RegisterCustomFonts();
+                _fontsRegistered = true;
+            }
+
         }
 
         [HttpPost("json")]
@@ -395,7 +401,7 @@ namespace BestPolicyReport.Controllers
                 $"รายงาน{sheetName}.xlsx");
         }
         [HttpPost("invoiceReport/pdf")]
-        [Obsolete]
+       
         public async Task<IActionResult?> GetInvoiceReportPDF(string invoiceNo)
         {
             var handler = new JwtSecurityTokenHandler();
@@ -441,7 +447,28 @@ namespace BestPolicyReport.Controllers
             
             //return View(web);
         }
-    }
 
+        private void RegisterCustomFonts()
+        {
+            // Construct the path to your custom fonts directory
+            string fontsDirectory = Path.Combine(_webHostEnvironment.WebRootPath, "Reports", "Fonts");
+
+            if (Directory.Exists(fontsDirectory))
+            {
+                var fontFiles = Directory.GetFiles(fontsDirectory, "*.ttf", SearchOption.TopDirectoryOnly);
+                foreach (var fontFile in fontFiles)
+                {
+                    // Use FastReport.FontManager.AddFont() to register the font
+                    // This is the recommended way
+                    FastReport.FontManager.AddFont(fontFile);
+                    Console.WriteLine($"Registered font: {fontFile}"); // For debugging
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Fonts directory not found: {fontsDirectory}"); // For debugging
+            }
+        }
+    }
 
 }
