@@ -26,7 +26,6 @@ RUN apt-get update && apt-get install -y \
     fontconfig \
     fonts-dejavu-core \
     ttf-mscorefonts-installer \
-    fonts-liberation \
     libicu-dev \
     libcairo2-dev \
     libjpeg-dev \
