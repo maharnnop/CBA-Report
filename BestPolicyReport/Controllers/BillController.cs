@@ -17,6 +17,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json.Linq;
+using FastReport.Utils;
 
 namespace BestPolicyReport.Controllers
 {
@@ -394,6 +395,7 @@ namespace BestPolicyReport.Controllers
                 $"รายงาน{sheetName}.xlsx");
         }
         [HttpPost("invoiceReport/pdf")]
+        [Obsolete]
         public async Task<IActionResult?> GetInvoiceReportPDF(string invoiceNo)
         {
             var handler = new JwtSecurityTokenHandler();
@@ -403,6 +405,13 @@ namespace BestPolicyReport.Controllers
 
             var result = await _billService.GetInvoicerpt(invoiceNo, usernameClaim);
             WebReport web = new WebReport();
+            var fonts = Directory.GetFiles($"{this._webHostEnvironment.WebRootPath}/Reports/Fonts");
+            //Each font is added to the report generator configuration
+            foreach (var font in fonts)
+            {
+                Config.PrivateFontCollection.AddFontFile(font);
+            }
+
             var path = $"{this._webHostEnvironment.WebRootPath}/Reports/InvoiceReport.frx";
             web.Report.Load(path);
             web.Report.SetParameterValue("invoiceNo", result.invoiceNo);
