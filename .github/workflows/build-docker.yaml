@@ -8,13 +8,10 @@ jobs:
     steps :
       - name: checkout
         uses: actions/checkout@v4 
-      - name: Get branch name
-        id: branch_name
-        run: echo "current_branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
       - name: Build image
-        run: docker build . -t maharnnops360/amity-cba-report:${{ steps.branch_name.outputs.current_branch }}
+        run: docker build . -t maharnnops360/amity-cba-report:latest
       - name: Push image to Docker Hub
         run: |
           docker login -u maharnnops360 -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push maharnnops360/amity-cba-report:${{ steps.branch_name.outputs.current_branch }}
+          docker push maharnnops360/amity-cba-report:latest
 
