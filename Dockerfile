@@ -23,7 +23,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 # This now includes more common fonts and the command to refresh the font cache.
 # Setting DEBIAN_FRONTEND to noninteractive ensures no prompts during installation.
 # wget and ca-certificates are crucial for apt-get to fetch packages securely.
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
+RUN  apt-get update && apt-get install -y \
     libgdiplus \
     fontconfig \
     fonts-dejavu-core \
