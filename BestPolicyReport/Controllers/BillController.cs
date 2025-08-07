@@ -31,6 +31,7 @@ namespace BestPolicyReport.Controllers
         private TimeZoneInfo bangkokTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Asia/Bangkok");
         private readonly IBillService _billService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private static bool _fontsRegistered = false; // Use a static flag to register fonts only once
 
         public BillController(IBillService billService, IWebHostEnvironment webHostEnvironment)
         {
