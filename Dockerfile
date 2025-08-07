@@ -37,7 +37,8 @@ RUN apt-get update && apt-get install -y \
     libtiff-dev \
     libgif-dev \
     libxrender1 \
-    && rm -rf /var/lib/apt/lists/*
+    
+RUN rm -rf /var/lib/apt/lists/*
 
 # Update the font cache after installing new fonts
 RUN fc-cache -f -v
