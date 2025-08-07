@@ -17,7 +17,7 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 
 # Pre-configure ttf-mscorefonts-installer to accept the EULA in its own layer
-RUN echo "debconf ttf-mscorefonts-installer/accepted-mscorefonts-eula select true" | debconf-set-selections
+#RUN echo "debconf ttf-mscorefonts-installer/accepted-mscorefonts-eula select true" | debconf-set-selections
 
 # Install libgdiplus and a comprehensive set of its common runtime dependencies.
 # This now includes more common fonts and the command to refresh the font cache.
