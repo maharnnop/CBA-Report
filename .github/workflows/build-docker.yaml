@@ -1,6 +1,8 @@
 name: Build and Publish image to Docker Hub
-on:
-  [workflow_dispatch]
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
   publish_images:
@@ -8,10 +10,13 @@ jobs:
     steps :
       - name: checkout
         uses: actions/checkout@v4
-      - name: build image
-        run: docker build . -t maharnnops360/amity-cba-report:latest 
-      - name: push image to docker hub
+      - name: Get branch name
+        id: branch_name
+        run: echo "::set-output name=current_branch::${GITHUB_REF#refs/heads/}"
+      - name: Build image
+        run: docker build . -t maharnnops360/amity-cba-report:${{ steps.branch_name.outputs.current_branch }}
+      - name: Push image to Docker Hub
         run: |
           docker login -u maharnnops360 -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push maharnnops360/amity-cba-report:latest
+          docker push maharnnops360/amity-cba-report:${{ steps.branch_name.outputs.current_branch }}
 
