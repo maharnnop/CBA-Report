@@ -18,11 +18,13 @@ RUN dotnet publish -c Release -o /app/publish
 # Create the final runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 
+
+# Pre-configure ttf-mscorefonts-installer to accept the EULA in its own layer
+RUN echo "debconf ttf-mscorefonts-installer/accepted-mscorefonts-eula select true" | debconf-set-selections
+
 # Install libgdiplus and a comprehensive set of its common runtime dependencies.
 # This now includes more common fonts and the command to refresh the font cache.
-# Pre-configure ttf-mscorefonts-installer to accept the EULA
-RUN echo "debconf ttf-mscorefonts-installer/accepted-mscorefonts-eula select true" | debconf-set-selections \
-    && apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     libgdiplus \
     fontconfig \
     fonts-dejavu-core \
@@ -35,7 +37,6 @@ RUN echo "debconf ttf-mscorefonts-installer/accepted-mscorefonts-eula select tru
     libtiff-dev \
     libgif-dev \
     libxrender1 \
-    # Clean up apt cache to keep image size down
     && rm -rf /var/lib/apt/lists/*
 
 # Update the font cache after installing new fonts
